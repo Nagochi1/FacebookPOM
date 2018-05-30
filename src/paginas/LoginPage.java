@@ -24,7 +24,7 @@ public class LoginPage {
 	public void logIn(String user,String pass) {
 		driver.findElement(By.id("email")).sendKeys(user);
 		driver.findElement(By.id("pass")).sendKeys(pass);
-		driver.findElement(By.xpath("//input[@value='Iniciar sesión']")).click();
+		driver.findElement(By.xpath("//input[@value='Entrar']")).click();
 		
 	}
 }

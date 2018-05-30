@@ -8,7 +8,15 @@ public class FacebookTestCasePOM extends BasePOM {
 	public void searchFriendTestCase()
 	{
 		login.logIn("luarball@hotmail.com", "Gonzalez");
-		search.searchFriend("Jesus Omar Navarro");
+		search.searchFriend("Carol Rojo");
+	}
+	
+	@Test
+	public void addFriendTestCase() {
+		login.logIn("luarball@hotmail.com", "Gonzalez");
+		search.searchFriend("Carol Rojo");
+		friend.AddFriend("Carol Rojo", "Carolina Rojo");
+				
 	}
 
 }

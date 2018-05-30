@@ -23,11 +23,9 @@ public class SearchPage {
 		searchFriendTxt = driver.findElement(By.name("q"));
 		searchFriendTxt.sendKeys(name);
 		searchBtn = driver.findElement(By.xpath("//button[@data-testid='facebar_search_button']"));
+		searchBtn.click();
 				
 	}
-	
-	
-	
-	
+
 
 }

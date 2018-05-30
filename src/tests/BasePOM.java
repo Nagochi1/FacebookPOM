@@ -1,38 +1,45 @@
 package tests;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.chrome.ChromeOptions;
 
+import paginas.AddFriendPage;
 import paginas.LoginPage;
 import paginas.SearchPage;
 
 public class BasePOM { 
 	
 	private static WebDriver driver;
-	//private static final WebDriverWait driverWait;
 	protected LoginPage login;
 	protected SearchPage search;
-	//AddFriendPage friend;
+	protected AddFriendPage friend;
 	
-	private static final String DRIVER_NAME = "webdriver.chrome.driver";
-	private static final String DRIVER_PATH = "C:\\testautomation\\libs\\drivers\\";
+	private static final String driverName = "webdriver.chrome.driver";
+	private static final String driverPath = "C:\\test_automation\\drivers\\chromedriver.exe";
 	
 	@Before
 	public void setup() {
-		System.setProperty(DRIVER_NAME, DRIVER_PATH);
-		driver = new ChromeDriver();
-		driver.get("https://www.facebook.com");
+		System.setProperty(driverName, driverPath);
+		ChromeOptions ops = new ChromeOptions();
+        ops.addArguments("--disable-notifications");
+        driver = new ChromeDriver(ops);
+ 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+		driver.get("http://www.facebook.com"); 
 		login = new LoginPage(driver);
 		search = new SearchPage(driver);
+		friend = new AddFriendPage(driver);
+			
 		
 	}
 	
 	@After
 	public void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 	
 	
